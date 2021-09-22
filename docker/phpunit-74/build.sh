@@ -16,7 +16,6 @@ fi
 # Push local image to dockerhub
 echo '--push image'
 docker login
-#docker login 'docker.io'
 docker push ${imgName}
 if [ ! "$?" == "0" ]; then
     echo "-- Error push image ${imgName}"

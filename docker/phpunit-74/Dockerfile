@@ -7,9 +7,17 @@ RUN apt update
 #------------------------------------------------------------------------------
 # Install common tools
 # curl    - many tasks for dowload files
-# make    - for pecl
-# gnupg2 software-properties-common - for MSSQL, add "microsoft.asc"
+# make    ->
+# zip     ->
+# unzip   ->
+#         - for pecl
+# gnupg2                      ->
+# software-properties-common  ->
+#         - for MSSQL, add "microsoft.asc"
 # unixodbc-dev   - for MSSQL
+# lsof - used in integration tests
+#      @see: test/integration/Adapter/Driver/Pdo/AbstractAdapterTest.php function isConnectedTcp
+#      @example: lsof -i -P -n | grep 3306 | grep 1
 #----
 
 RUN DEBIAN_FRONTEND=noninteractive apt install -y \
@@ -19,7 +27,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt install -y \
       unzip \
       gnupg2 \
       software-properties-common \
-      unixodbc-dev
+      unixodbc-dev \
+      lsof
 
 #------------------------------------------------------------------------------
 # Install PHP and php-composer
