@@ -1,6 +1,10 @@
 # laminas-db-test-by-docker
 Run unit or integration tests for "laminas-db" by docker
 
+* github https://github.com/ZVanoZ/laminas-db-test-by-docker
+* dockerhub https://hub.docker.com/r/zvanoz/laminas-db-test-by-docker
+
+
 # How to use
 
 ```shell script
@@ -36,4 +40,29 @@ $ docker run --rm -it --volume $(pwd):/app zvanoz/laminas-db-test-by-docker:74 c
 
 # 4.2. Run integration tests
 $ docker run --rm -it --volume $(pwd):/app zvanoz/laminas-db-test-by-docker:74 composer -vvv test-integration 
+```
+
+# Usefull commands
+
+````shell script
+#------------------------------------------------------------------------------
+# phpmyadmin
+# Default options
+# Server: 92.168.20.20
+# Username: root
+# Password: Password123
+# Database: laminasdb_test
+#----
+
+# Open phpmyadmin on http://localhost:20001/
+# You can ease connect to MySQL in VirtualBox
+$ docker run --name myadmin -d -e PMA_ARBITRARY=1 -p 8080:80 phpmyadmin
+
+# Open terminal for check acces to host machine from runned container
+$ docker container exec -ti myadmin bash
+root@...:/var/www/html# apt-get update
+root@...:/var/www/html# apt install -y iputils- ping
+root@...:/var/www/html# ping 92.168.20.20
+#------------------------------------------------------------------------------
+
 ```
