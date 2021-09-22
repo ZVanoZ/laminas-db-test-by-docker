@@ -22,13 +22,18 @@ $ vagrant up
 # Examle of the file by path "laminas-db-test-by-docker/docker/phpunit-74/20-xdebug.ini.sample"
 
 # 3. update vendors library by composer
-$ docker run --rm -it --volume "$(pwd):/app" zvanoz/laminas-db-test-by-docker:74 composer update
+
+# Check, that mapped directory is correct. Expected "laminas-db" sources.
+$ docker run --rm -it --volume $(pwd):/app zvanoz/laminas-db-test-by-docker:74 ls -l
+
+# Ubdate libraries
+$ docker run --rm -it --volume $(pwd):/app zvanoz/laminas-db-test-by-docker:74 composer update
 
 # 4. run tests
 
 # 4.1. Run unit tests
-$ docker run --rm -it --volume "$(pwd):/app" zvanoz/laminas-db-test-by-docker:74 composer test
+$ docker run --rm -it --volume $(pwd):/app zvanoz/laminas-db-test-by-docker:74 composer test
 
 # 4.2. Run integration tests
-docker run --rm -it --volume "$(pwd):/app" zvanoz/laminas-db-test-by-docker:74 composer -vvv test-integration 
+$ docker run --rm -it --volume $(pwd):/app zvanoz/laminas-db-test-by-docker:74 composer -vvv test-integration 
 ```
