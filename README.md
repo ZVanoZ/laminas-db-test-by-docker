@@ -16,14 +16,19 @@ $ cd laminas-db
 
 # 2.1. Prepare your environment
 
+# For all tests copy "phpunit.xml.dist" to "phpunit.xml" in directory "laminas-db".
+$ cp phpunit.xml.dist phpunit.xml
+
+# For check and fix code-style, create "phpcs.xml"  
+$ cp phpcs.xml.dist phpcs.xml
+
+# For debug tests by "xdebug", you need create file "20-xdebug.ini" in directory "laminas-db".
+# Example of the file by path "laminas-db-test-by-docker/docker/phpunit-74/20-xdebug.ini.sample"
+$ touch 20-xdebug.ini
+
 # For  "integration tests" you need to run vagrant
 # It up a container of virual box with: MySQL, PostgreSQL, MSSQL 
 $ vagrant up
-
-# For all tests copy "phpunit.xml.dist" to "phpunit.xml" in directory "laminas-db".
-
-# For debug tests by "xdebug", you need create file "20-xdebug.ini" in directory "laminas-db".
-# Examle of the file by path "laminas-db-test-by-docker/docker/phpunit-74/20-xdebug.ini.sample"
 
 # 3. update vendors library by composer
 
@@ -45,6 +50,18 @@ $ docker run --rm -it --volume $(pwd):/app zvanoz/laminas-db-test-by-docker:74 c
 # Usefull commands
 
 ````shell script
+#------------------------------------------------------------------------------
+# Check and fix code before commit and pool request.
+#----- 
+
+# Check code, using rules laminas comunity.
+$ docker run --rm -it --volume $(pwd):/app zvanoz/laminas-db-test-by-docker:74 composer cs-check -vvv
+$ docker run --rm -it --volume $(pwd):/app zvanoz/laminas-db-test-by-docker:74 composer cs-check --help
+
+# Auto-fix code, using rules laminas comunity.
+$ docker run --rm -it --volume $(pwd):/app zvanoz/laminas-db-test-by-docker:74 composer cs-fix -vvv
+$ docker run --rm -it --volume $(pwd):/app zvanoz/laminas-db-test-by-docker:74 composer cs-fix --help
+
 #------------------------------------------------------------------------------
 # phpmyadmin
 # Default options
