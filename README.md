@@ -35,7 +35,7 @@ $ vagrant up
 # Check, that mapped directory is correct. Expected "laminas-db" sources.
 $ docker run --rm -it --volume $(pwd):/app zvanoz/laminas-db-test-by-docker:74 ls -l
 
-# Ubdate libraries
+# Update libraries
 $ docker run --rm -it --volume $(pwd):/app zvanoz/laminas-db-test-by-docker:74 composer update
 
 # 4. run tests
@@ -44,7 +44,13 @@ $ docker run --rm -it --volume $(pwd):/app zvanoz/laminas-db-test-by-docker:74 c
 $ docker run --rm -it --volume $(pwd):/app zvanoz/laminas-db-test-by-docker:74 composer test
 
 # 4.2. Run integration tests
-$ docker run --rm -it --volume $(pwd):/app zvanoz/laminas-db-test-by-docker:74 composer -vvv test-integration 
+$ docker run --rm -it --volume $(pwd):/app zvanoz/laminas-db-test-by-docker:74 composer -vvv test-integration
+
+# 5. Run all tests, if you need
+$ git clone https://github.com/laminas/laminas-db.git laminas-db 
+$ git clone https://github.com/ZVanoZ/laminas-db-test-by-docker.git laminas-db-test-by-docker
+$ cd laminas-db
+$ bash ../laminas-db-test-by-docker/run-all.sh
 ```
 
 # Usefull commands
