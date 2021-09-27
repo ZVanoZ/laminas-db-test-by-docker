@@ -18,8 +18,8 @@ echo '--push image'
 docker login
 docker push ${imgName}
 if [ ! "$?" == "0" ]; then
-    echo "-- Error push image ${imgName}"
-    exit 1
+   echo "-- Error push image ${imgName}"
+   exit 1
 fi
 #------------------------------------------------------------------------------
 echo 'Change option "xdebug.remote_host" in "20-xdebug.ini" to'

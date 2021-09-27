@@ -40,7 +40,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt install -y \
 RUN DEBIAN_FRONTEND=noninteractive apt install -y \
     php-cli  php-dev php-pear \
     php-json php-common php-mysql php-zip php-gd php-mbstring php-curl php-xml php-pear php-bcmath \
-    php-pgsql php7.4-odbc sqlite
+    php-pgsql php7.4-odbc sqlite php7.4-sqlite3
 
 # Install extension XDebug
 RUN apt-get install -y php-xdebug
