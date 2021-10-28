@@ -79,6 +79,8 @@ $ docker run --rm -it --volume $(pwd):/app zvanoz/laminas-db-test-by-docker:74 c
 # Open phpmyadmin on http://localhost:20001/
 # You can ease connect to MySQL in VirtualBox
 $ docker run --name myadmin -d -e PMA_ARBITRARY=1 -p 20001:80 phpmyadmin
+# or run temporary container
+$ docker run --rm -it -e PMA_ARBITRARY=1 -p 20001:80 phpmyadmin
 
 # Open terminal for check acces to host machine from runned container
 $ docker container exec -ti myadmin bash
