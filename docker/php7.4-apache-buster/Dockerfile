@@ -143,6 +143,8 @@ RUN docker-php-ext-configure pdo_oci --with-pdo-oci=instantclient,/opt/oracle/in
 COPY 20-xdebug.ini.sample 20-xdebug.ini
 RUN ln -sfv `pwd`/20-xdebug.ini ${PHP_INI_ADD_DIR}/20-xdebug.ini
 
+RUN a2enmod rewrite
+
 #------------------------------------------------------------------------------
 # Clean a created image
 #----
