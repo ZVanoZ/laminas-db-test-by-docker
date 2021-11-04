@@ -33,6 +33,7 @@ RUN apt update
 RUN DEBIAN_FRONTEND=noninteractive apt install -y \
     curl \
     make \
+    git \
     zip \
     unzip \
     gnupg2 \
