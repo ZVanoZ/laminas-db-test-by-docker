@@ -7,6 +7,10 @@ Run unit or integration tests for ["laminas-db"](https://github.com/laminas/lami
 # How to use
 
 ```shell script
+# 0. Run databases for integration test 
+cd docker-db
+docker-compose up
+
 # 1. Clone sources of "laminas-db".
 $ git clone https://github.com/laminas/laminas-db.git laminas-db 
 

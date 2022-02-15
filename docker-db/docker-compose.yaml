@@ -1,0 +1,23 @@
+version: "3.6"
+services:
+  oracle-xe-18:
+    # gvenzl/oracle... - @link (https://hub.docker.com/r/gvenzl/oracle-xe)
+    image: gvenzl/oracle-xe:18
+    # Local name of generated conainer
+    container_name: local.laminas-db.oracle-xe-18
+    environment:
+      - ORACLE_DATABASE=laminasdb_test
+      - ORACLE_PASSWORD=sysPass
+      - APP_USER=ldbtUser
+      - APP_USER_PASSWORD=Password123
+    # Forward Oracle port
+    ports:
+      - 1521:1521
+    volumes:
+      - ./oracle-xe/18/db:/opt/oracle/oradata
+    # Provide healthcheck script options for startup
+#    options: >-
+#      --health-cmd healthcheck.sh
+#      --health-interval 10s
+#      --health-timeout 5s
+#      --health-retries 10
